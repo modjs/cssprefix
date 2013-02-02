@@ -29,6 +29,7 @@ module.exports = {
         dist: "cssprefix"
     }
 };
+```
 
 ```sh
 mod dist
