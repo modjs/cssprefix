@@ -28,7 +28,7 @@ Support by https://github.com/imsky/cssFx
     box-pack:center;
     box-align:center
 }
-``
+```
 
 ### Prefixed CSS Rules
 ```css
