@@ -12,7 +12,7 @@ npm install -g mod-cssprefix
 
 ### By Command-line
 ```sh
-mod cssprefix ./css/mian.css
+$ mod cssprefix ./css/mian.css
 ```
 
 ### By AutoTask
@@ -32,7 +32,7 @@ module.exports = {
 ```
 
 ```sh
-mod dist
+$ mod dist
 ```
 
 
