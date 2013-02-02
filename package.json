@@ -1,0 +1,17 @@
+{
+    "name": "mod-cssprefix",
+    "version": "0.0.1",
+    "description": "auto vendor prefix for CSS3 properties",
+    "maintainers": [
+        {"name": "yuanyan", "web": "https://github.com/yuanyan"}
+    ],
+    "homepage": "http://modulejs.github.com/modjs",
+	"main": "cssprefix.js",
+    "repository": {
+        "type": "git",
+        "url": "http://github.com/modjs/cssprefix.git"
+    },
+    "engines": {"node": ">= 0.6.x"},
+    "bugs": {"url": "http://github.com/modulejs/modjs/issues"},
+    "license": "MIT"
+}
