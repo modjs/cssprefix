@@ -1,0 +1,10 @@
+module.exports = {
+    plugins: {
+        cssprefix: "../index.js"
+    },
+    tasks: {
+        cssprefix : {
+            src: "*.css"
+        }
+    }
+};

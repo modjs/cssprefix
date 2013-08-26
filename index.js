@@ -1,50 +1,61 @@
-var fs = require('fs'),
-    path = require('path');
-
+var fs = require('fs');
+var path = require('path');
 
 exports.summary = 'Auto vendor prefix for CSS3 properties';
 
-exports.usage = '<source> [options]';
+exports.usage = '<src> [options]';
 
 exports.options = {
-    "d":{
-        alias:'dest',
-        default:'<source>',
+    "dest":{
+        alias:'d',
         describe:'destination file'
     },
+    "suffix" : {
+        alias : 's'
+        ,default : '.prefixed'
+        ,describe : 'destination file suffix append'
+    },
 
-    "c":{
-        alias:'charset',
+    'output': {
+        alias: 'o'
+        ,default : 'file'
+        ,describe : 'specify output type: file pipe'
+    },
+    
+    "charset":{
+        alias:'c',
         default:'utf-8',
         describe:'file encoding type'
     }
 };
 
-exports.run = function (options, callback) {
+exports.run = function (options) {
 
-    var source = options.source,
-        dest = options.dest,
-        charset = options.charset;
-
-    var file = exports.file,
-        utils = exports.utils;
-
-    source = utils.arrayify(source);
-    var files = file.glob(source);
-
-    try {
-        files.forEach(function (fp) {
-            var fileContent = file.read(fp, charset);
-            var prefixed  = prefixCSS(fileContent);
-            exports.log(source + " > " + dest);
-            file.write(dest, prefixed, charset);
-        });
-
-        callback(null, files);
-
-    } catch (err) {
-        callback(err);
-    }
+    var dest = options.dest;
+    var charset = options.charset;
+    var suffix = options.suffix;
+    
+    var file = exports.file;
+    
+    exports.files.forEach(function (inputFile) {
+        var outputFile;
+        if( !dest ) {
+            outputFile = inputFile; 
+        }else if( file.isDirFormat(dest) ){
+            var filename = path.basename(inputFile);
+            outputFile = path.join(dest, filename);
+        }else{
+            outputFile = dest;
+        }
+        
+        if(suffix)
+            outputFile = file.suffix(outputFile, suffix);
+        
+        var fileContent = file.read(inputFile, charset);
+        var prefixed = prefixCSS(fileContent);
+        exports.log(inputFile, ">", outputFile);
+        file.write(outputFile, prefixed, charset);
+    });
 
 };
 
@@ -341,7 +352,7 @@ function prefixCSS(cssFile) {
                 if (rule.indexOf(supported_rules[_y]) >= 0) {
                     var new_dec = processDec(rule);
                     if (new_dec) {
-                        rules.push(selector + "{" + new_dec + "}");
+                        rules.push(selector + " {\n" + new_dec + "\n}");
                     }
                     break;
                 }

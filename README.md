@@ -49,37 +49,22 @@ Support by https://github.com/imsky/cssFx
 }
 ```
 
-## Install
 
-```sh
-# modjs installed first: npm install -g modjs
-npm install -g mod-cssprefix
-```
+## Usage
 
-## Examples
 
-### By Command-line
-```sh
-$ mod cssprefix ./css/mian.css
-```
-
-### By AutoTask
 ```js
 // Modfile
 module.exports = {
-    tasks: {
-        "cssprefix" : {
-            "source": "./css/*.css"
-        }
+    plugins: {
+        cssprefix: "mod-cssprefix"
     },
-
-    targets: {
-        dist: "cssprefix"
+    tasks: {
+        cssprefix : {
+            src: "./css/*.css",
+            dest : "./cssprefixed/"
+        }
     }
 };
-```
-
-```sh
-$ mod dist
 ```
 
