@@ -1,6 +1,6 @@
 {
     "name": "mod-cssprefix",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "description": "auto vendor prefix for CSS3 properties",
     "maintainers": [
         {"name": "yuanyan", "web": "https://github.com/yuanyan"}
@@ -9,6 +9,9 @@
     "repository": {
         "type": "git",
         "url": "http://github.com/modjs/cssprefix.git"
+    },
+    "dependencies": {
+        "autoprefixer": "~0.8"
     },
     "engines": {"node": ">= 0.8.x"},
     "bugs": {"url": "http://github.com/modulejs/modjs/issues"},

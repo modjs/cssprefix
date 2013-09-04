@@ -1,0 +1,24 @@
+#foo {
+  -webkit-box-shadow: 0px 0px 15px #407fab;
+  box-shadow: 0px 0px 15px #407fab;
+  border-radius: 10px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: box;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  box-pack: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  box-align: center;
+}
+
+#bar {
+  display: none;
+}
